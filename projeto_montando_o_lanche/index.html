@@ -34,7 +34,7 @@
                         </div>
                    </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" v-if="etapa == 1">
                     <!--Tipo do pão-->
                     <div class="row mt-2">
                         <div class="col">
@@ -112,6 +112,34 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mt-2">
+                    <div class="col d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary" @click="fazerPedido()">
+                            Fazer pedido 
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-md-6" v-if="etapa == 2">
+                    <div class="row mt-2">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">INFORME SEUS DADOS</div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Nome</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Endereço</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>      
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -123,7 +151,8 @@
                 inputTipoPao: '',
                 inputSalada: [],
                 inputMolho: [],
-                inputHamburguer: ''
+                inputHamburguer: '',
+                etapa: 1
             },
             computed: {
                 pao() {
@@ -161,19 +190,25 @@
                     return './imagens/padrao/molho.png'
                 },
                 hamburguer() {
-                    switch(this.inputHamburguer) {
-                        case 'bovino':
-                            return ['./imagens/bovino.png']
-                        case 'frango':
-                            return ['./imagens/frango.png']
-                        case 'soja':
-                            return ['./imagens/soja.png']
-                        default:
-                            return './imagens/padrao/hamburguer.png'
-
+                    return {
+                        'bovino': ['imagens/bovino.png'],
+                        'frango': ['imagens/frango.png'],
+                        'soja': ['imagens/soja.png']
+                    }
+                    [this.inputHamburguer] || './imagens/padrao/hamburguer.png' 
+                }
+                    
+            },
+            methods: {
+                fazerPedido() {
+                    if(this.inputTipoPao && this.inputHamburguer){
+                        this.etapa = 2
+                    } else {    
+                        alert('Você precisa selecionar um pão e um hamburguer')
                     }
                 }
             }
+
         })
     </script>
 
