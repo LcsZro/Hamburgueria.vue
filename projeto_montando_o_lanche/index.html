@@ -164,7 +164,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -191,27 +190,31 @@
                     [this.inputTipoPao] || ['./imagens/padrao/pao_superior.png', './imagens/padrao/pao_inferior.png' ]
                 },
                 alface() {
-                    return {
-                    'alface': ['imagens/alface.png']
-                   }
-                   [this.inputSalada] || './imagens/padrao/alface.png'
+                    if(this.inputSalada.includes('alface')){
+                        return './imagens/alface.png'
+                    }
+
+                    return './imagens/padrao/alface.png'
                 },
                 ketchup() {
-                    return {
-                    'ketchup': ['imagens/ketchup.png']
-                   }
-                   [this.inputMolho] || './imagens/padrao/molho.png'
+                    if(this.inputMolho.includes('ketchup')){
+                        return './imagens/ketchup.png'
+                    }
+
+                    return './imagens/padrao/molho.png'
                 },
                 maionese() {
-                   return {
-                    'maionese': ['imagens/maionese.png']
-                   }
-                   [this.inputMolho] || './imagens/padrao/molho.png'
+                    if(this.inputMolho.includes('maionese')){
+                        return './imagens/maionese.png'
+                    }
+
+                    return './imagens/padrao/molho.png'
                 },
                 mostarda() {
-                    if(this.inputMolho.includes('mostarda')) {
-                        return 'imagens/mostarda.png'
+                    if(this.inputMolho.includes('mostarda')){
+                        return './imagens/mostarda.png'
                     }
+
                     return './imagens/padrao/molho.png'
                 },
                 hamburguer() {
