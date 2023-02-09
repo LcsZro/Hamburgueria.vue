@@ -184,32 +184,29 @@
             },
             computed: {
                 pao() {
-                    switch(this.inputTipoPao){
-                        case 'gergelim':
-                            return ['./imagens/pao_gergelim_superior.png','./imagens/pao_gergelim_inferior.png']  
-                        case 'australiano':
-                            return ['./imagens/pao_australiano_superior.png','./imagens/pao_australiano_inferior.png' ]  
-                        default:
-                            return ['./imagens/padrao/pao_superior.png','./imagens/padrao/pao_inferior.png'] 
+                    return {
+                        'gergelim': ['./imagens/pao_gergelim_superior.png','./imagens/pao_gergelim_inferior.png'],  
+                        'australiano': ['./imagens/pao_australiano_superior.png','./imagens/pao_australiano_inferior.png' ] 
                     }
+                    [this.inputTipoPao] || ['./imagens/padrao/pao_superior.png', './imagens/padrao/pao_inferior.png' ]
                 },
                 alface() {
-                    if(this.inputSalada.includes('alface')) {
-                        return 'imagens/alface.png'
-                    }
-                    return './imagens/padrao/alface.png'
+                    return {
+                    'alface': ['imagens/alface.png']
+                   }
+                   [this.inputSalada] || './imagens/padrao/alface.png'
                 },
                 ketchup() {
-                    if(this.inputMolho.includes('ketchup')) {
-                        return 'imagens/ketchup.png'
-                    }
-                    return './imagens/padrao/molho.png'
+                    return {
+                    'ketchup': ['imagens/ketchup.png']
+                   }
+                   [this.inputMolho] || './imagens/padrao/molho.png'
                 },
                 maionese() {
-                    if(this.inputMolho.includes('maionese')) {
-                        return 'imagens/maionese.png'
-                    }
-                    return './imagens/padrao/molho.png'
+                   return {
+                    'maionese': ['imagens/maionese.png']
+                   }
+                   [this.inputMolho] || './imagens/padrao/molho.png'
                 },
                 mostarda() {
                     if(this.inputMolho.includes('mostarda')) {
